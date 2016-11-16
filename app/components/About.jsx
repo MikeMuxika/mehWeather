@@ -14,9 +14,9 @@ var About = (props) => {
           <li><a href="http://webpack.github.io/" target="_blank">Webpack.js</a></li>
           <li><a href="http://openweathermap.org/api" target="_blank">The OpenWeatherMap API</a></li>
           <li><a href="http://foundation.zurb.com/sites/docs/" target="_blank">Zurb's Foundation 6 css Framework</a></li>
-          <li><a href="heroku.com" target="_blank">Heroku</a></li>
+          <li><a href="http://heroku.com" target="_blank">Heroku</a></li>
         </ul>
-        <p>You can view my other projects over at <a href="github.com/muxica" target="_blank">Github</a></p>
+        <p>You can view my other projects over at <a href="http://github.com/muxica" target="_blank">Github</a></p>
       </div>
     </div>
   )
