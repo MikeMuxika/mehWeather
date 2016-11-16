@@ -39,7 +39,7 @@ export default class Weather extends React.Component {
     }
 
     return (
-      <div style={{textAlign: 'center'}}>
+      <div>
         <WeatherForm onSearch={this.handleSearch}/>
         {renderMessage()}
       </div>
