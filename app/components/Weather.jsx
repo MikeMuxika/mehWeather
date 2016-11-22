@@ -1,7 +1,9 @@
 import React from 'react';
 import WeatherForm from './WeatherForm';
 import WeatherMessage from './WeatherMessage';
+import ErrorModal from './ErrorModal';
 import OpenWeatherMap from 'api/OpenWeatherMap';
+
 
 export default class Weather extends React.Component {
   constructor(props) {
@@ -12,7 +14,11 @@ export default class Weather extends React.Component {
   }
   handleSearch = (location) => {
     var that = this;
-    this.setState({isLoading: true});
+
+    this.setState({
+      isLoading: true,
+      errorMessage: undefined
+    });
 
     OpenWeatherMap.getTemp(location).then(function(temp) {
       that.setState({
@@ -20,28 +26,34 @@ export default class Weather extends React.Component {
         temp: temp,
         isLoading: false
       })
-    }, function(errorMessage) {
+    }, function(e) {
       that.setState({
-        isLoading: false
+        isLoading: false,
+        errorMessage: e.message
       });
-      alert(errorMessage);
     });
   };
   render() {
-    var {isLoading, location, temp} = this.state;
-
+    var {isLoading, location, temp, errorMessage} = this.state;
     function renderMessage() {
       if (isLoading) {
-        return <h3>Fetching Weather...</h3>;
+        return <h3 className="text-center">Fetching Weather...</h3>;
       } else if (temp && location) {
         return <WeatherMessage temp={temp} location={location}/>
       }
     }
-
+    function renderError() {
+      if(typeof errorMessage === 'string') {
+        return (
+          <ErrorModal message="Error: City Not Found"/>
+        )
+      }
+    }
     return (
       <div>
         <WeatherForm onSearch={this.handleSearch}/>
         {renderMessage()}
+        {renderError()}
       </div>
     )
   }

@@ -12,15 +12,20 @@ export default class WeatherForm extends React.Component {
   render() {
     return (
       <div>
-        <h1>Get the Weather</h1>
+        <h2 className="text-center" style={{marginBottom: '25px'}}>Get the Weather</h2>
         <form onSubmit={this.onFormSubmit}>
-          <input
-            placeholder="Enter City Name"
-            ref="location"
-          />
-          <button>
-            Get the Weather
-          </button>
+          <div className="row">
+            <div className="large-8 columns">
+              <label>
+                <input type="text" placeholder="Enter City Name" ref="location" />
+              </label>
+            </div>
+            <div className="large-4 columns">
+              <button className="button expanded hollow">
+                Get the Weather
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     );

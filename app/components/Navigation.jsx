@@ -14,7 +14,7 @@ export default class Navigation extends React.Component {
   }
   render() {
     return (
-      <div className="top-bar">
+      <div className="top-bar" style={{marginBottom: '25px'}}>
         <div className="top-bar-left">
           <ul className="menu align-left">
             <li className="menu-text">React Weather App</li>
